@@ -39,7 +39,8 @@ class Program
     {
         while(true)
         {
-        
+
+
        // Menu avec choix de la calculatrice
         Console.WriteLine("-------- Calculatrice ---------");
         Console.WriteLine("1. Addition ");
@@ -49,47 +50,64 @@ class Program
         Console.WriteLine("5. Puissance ");
         Console.WriteLine("0. Quitter ");
         Console.Write("Choisissez une options : ");
-            int options;
-            int.TryParse(Console.ReadLine(), out options);
-            if (options == 0) break;
+            string options = Console.ReadLine();
+            if (options == "0")
+            {
+                return;
+            }
+            else if (options != "1" && options != "2" && options != "3" && options != "4" && options != "5")
+            {
+                Console.Clear();
+                Console.WriteLine("Erreur! Veuillez choisir une option valide.");
+                continue;
+            }
+
         // Affichage après le choix de l'utilisateur
+        double a;
+        double b;
         Console.WriteLine("Entrez le premier nombre : ");
-        double a = int.Parse(Console.ReadLine());
+            while (!double.TryParse(Console.ReadLine(), out a))
+            {
+                Console.WriteLine("Erreur veuillez entrez un nombre!");
+            }
         Console.WriteLine("Entrez le second nombre : ");
-        double b = int.Parse(Console.ReadLine());
-        Console.Write("Résultat : ");
+            while (!double.TryParse(Console.ReadLine(), out b))
+            {
+                Console.WriteLine("Erreur veuillez entrez un nombre!");
+            }
+            Console.Clear();
+        Console.Write($"Résultat : ");
 
         // choix fonctionnels via un switch
         switch (options)
         {
-            case 1:
+            case "1":
                 addition(a, b);
                 break;
-            case 2:
+            case "2":
                 soustraction(a, b);
                 break;
-            case 3:
+            case "3":
                 multiplication(a, b);
                 break;
-            case 4:
+            case "4":
                 division(a, b); 
                 break;
-            case 5:
+            case "5":
                 puissance(a, b);
                 break;
-            case 6:
+            case "6":
                 Console.WriteLine("Options invalide!");
                 break;
             default: 
                 Console.WriteLine("Options invalide!");
                 break;
         }
-        Console.WriteLine("Appuyez sur une touche pour retourner au menu ou appuyez sur 0 pour quitter.");
+        Console.WriteLine("Appuyez sur une touche pour retourner au menu.");
         Console.ReadKey();
             Console.Clear();
-            if (Console.ReadKey().Key.ToString() == "0") break;
+
         }
 
     }
 }
-
