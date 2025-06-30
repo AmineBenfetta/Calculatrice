@@ -58,6 +58,7 @@ class Program
 
         // Affichage après le choix de l'utilisateur
         double b = 0;
+            // condition pour enchainer les opérations
             if (a > 0)
             {
             Console.WriteLine("Entrez le second nombre : ");
@@ -123,11 +124,6 @@ class Program
             {
                 continue;
             }
-
-
-                Console.WriteLine("Appuyez sur une touche pour retourner au menu.");
-        Console.ReadKey();
-            Console.Clear();
 
         }
 
