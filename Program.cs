@@ -3,41 +3,35 @@
 class Program
 {
     // Fonctions de la calculatrice
-    static void addition(double a, double b)
+    static double addition(double a, double b)
     {
-        Console.WriteLine(a + b);
+         return a + b;
     }
 
-    static void soustraction(double a, double b)
+    static double soustraction(double a, double b)
     {
-        Console.WriteLine(a - b);
+        return a - b;
     }
 
-    static void multiplication(double a, double b)
+    static double multiplication(double a, double b)
     {
-        Console.WriteLine(a * b);
+        return a * b;
     }
 
-    static void division(double a, double b)
+    static double division(double a, double b)
     {
-        // Condition qui empèche le crash lors d'une division par 0.
-        if (b == 0)
-        {
-            Console.WriteLine("Impossible de diviser par 0!");
-        } else
-        {
-            Console.WriteLine(a / b);
-        }
+            return a / b;
     }
 
-    static void puissance(double a, double b)
+    static double puissance(double a, double b)
     {
-        Console.WriteLine(Math.Pow(a, b));
+        return Math.Pow(a, b);
     }
 
     static void Main(string[] args)
     {
-        while(true)
+        double a = 0;
+        while (true)
         {
 
 
@@ -63,47 +57,75 @@ class Program
             }
 
         // Affichage après le choix de l'utilisateur
-        double a;
-        double b;
-        Console.WriteLine("Entrez le premier nombre : ");
-            while (!double.TryParse(Console.ReadLine(), out a))
+        double b = 0;
+            if (a > 0)
+            {
+            Console.WriteLine("Entrez le second nombre : ");
+                 while (!double.TryParse(Console.ReadLine(), out b))
+                    {
+                        Console.WriteLine("Erreur veuillez entrez un nombre!");
+                    }
+            } else if (a == 0)
+            {
+                Console.WriteLine("Entrez le premier nombre : ");
+                while (!double.TryParse(Console.ReadLine(), out a))
             {
                 Console.WriteLine("Erreur veuillez entrez un nombre!");
             }
-        Console.WriteLine("Entrez le second nombre : ");
-            while (!double.TryParse(Console.ReadLine(), out b))
-            {
-                Console.WriteLine("Erreur veuillez entrez un nombre!");
+                Console.WriteLine("Entrez le second nombre : ");
+                while (!double.TryParse(Console.ReadLine(), out b))
+                {
+                    Console.WriteLine("Erreur veuillez entrez un nombre!");
+                }
             }
+                
+        
             Console.Clear();
         Console.Write($"Résultat : ");
 
         // choix fonctionnels via un switch
-        switch (options)
-        {
-            case "1":
-                addition(a, b);
-                break;
-            case "2":
-                soustraction(a, b);
-                break;
-            case "3":
-                multiplication(a, b);
-                break;
-            case "4":
-                division(a, b); 
-                break;
-            case "5":
-                puissance(a, b);
-                break;
-            case "6":
-                Console.WriteLine("Options invalide!");
-                break;
-            default: 
-                Console.WriteLine("Options invalide!");
-                break;
+            
+            switch (options)
+                {
+                 case "1":
+                    Console.WriteLine($"{a} + {b} = " + addition(a, b));
+                   a = addition(a, b);
+                    break;
+                 case "2":
+                    Console.WriteLine($"{a} - {b} = " + soustraction(a, b));
+                    a = soustraction(a, b);
+                    break;
+                 case "3":
+                    Console.WriteLine($"{a} x {b} = " + multiplication(a, b));
+                    a = multiplication(a, b);
+                    break;
+                 case "4":
+                    // Condition qui empèche le crash lors d'une division par 0.
+                    if (b == 0)
+                    {
+                        Console.WriteLine("Impossible de diviser par 0!");
         }
-        Console.WriteLine("Appuyez sur une touche pour retourner au menu.");
+                    else
+                    {
+                        Console.WriteLine($"{a} / {b} = " + division(a, b));
+                    }
+                    a = division(a, b);
+                    break;
+                 case "5":
+                    Console.WriteLine($"{a} puissance {b} = " + puissance(a, b));
+                    a = puissance(a, b);
+                    break;
+                 default: 
+                    Console.WriteLine("Options invalide!");
+                    break;
+                }
+            if (a > 0)
+            {
+                continue;
+            }
+
+
+                Console.WriteLine("Appuyez sur une touche pour retourner au menu.");
         Console.ReadKey();
             Console.Clear();
 
