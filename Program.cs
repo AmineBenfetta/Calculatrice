@@ -3,14 +3,36 @@
 class Program
 {
     // Fonctions de la calculatrice
-    static void addition(int a, int b)
+    static void addition(double a, double b)
     {
         Console.WriteLine(a + b);
     }
 
-    static void soustraction(int a, int b)
+    static void soustraction(double a, double b)
     {
         Console.WriteLine(a - b);
+    }
+
+    static void multiplication(double a, double b)
+    {
+        Console.WriteLine(a * b);
+    }
+
+    static void division(double a, double b)
+    {
+        // Condition qui empèche le crash lors d'une division par 0.
+        if (b == 0)
+        {
+            Console.WriteLine("Impossible de diviser par 0!");
+        } else
+        {
+            Console.WriteLine(a / b);
+        }
+    }
+
+    static void puissance(double a, double b)
+    {
+        Console.WriteLine(Math.Pow(a, b));
     }
 
     static void Main(string[] args)
@@ -28,13 +50,13 @@ class Program
 
         // Affichage après le choix de l'utilisateur
         Console.WriteLine("Entrez le premier nombre : ");
-        int a = int.Parse(Console.ReadLine());
+        double a = int.Parse(Console.ReadLine());
         Console.WriteLine("Entrez le second nombre : ");
-        int b = int.Parse(Console.ReadLine());
+        double b = int.Parse(Console.ReadLine());
         Console.Write("Résultat : ");
 
         // choix fonctionnels via un switch
-        switch(options)
+        switch (options)
         {
             case 1:
                 addition(a, b);
@@ -43,13 +65,13 @@ class Program
                 soustraction(a, b);
                 break;
             case 3:
-                Console.WriteLine("Options invalide!");
+                multiplication(a, b);
                 break;
             case 4:
-                Console.WriteLine("Options invalide!");
+                division(a, b); 
                 break;
             case 5:
-                Console.WriteLine("Options invalide!");
+                puissance(a, b);
                 break;
             case 6:
                 Console.WriteLine("Options invalide!");
