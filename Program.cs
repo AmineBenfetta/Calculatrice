@@ -37,6 +37,9 @@ class Program
 
     static void Main(string[] args)
     {
+        while(true)
+        {
+        
        // Menu avec choix de la calculatrice
         Console.WriteLine("-------- Calculatrice ---------");
         Console.WriteLine("1. Addition ");
@@ -44,10 +47,11 @@ class Program
         Console.WriteLine("3. Multiplication ");
         Console.WriteLine("4. Division ");
         Console.WriteLine("5. Puissance ");
-        Console.WriteLine("6. Quitter ");
+        Console.WriteLine("0. Quitter ");
         Console.Write("Choisissez une options : ");
-        int options = int.Parse(Console.ReadLine());
-
+            int options;
+            int.TryParse(Console.ReadLine(), out options);
+            if (options == 0) break;
         // Affichage après le choix de l'utilisateur
         Console.WriteLine("Entrez le premier nombre : ");
         double a = int.Parse(Console.ReadLine());
@@ -80,8 +84,12 @@ class Program
                 Console.WriteLine("Options invalide!");
                 break;
         }
-        Console.WriteLine("Appuyez sur une touche pour quitter...");
+        Console.WriteLine("Appuyez sur une touche pour retourner au menu ou appuyez sur 0 pour quitter.");
         Console.ReadKey();
+            Console.Clear();
+            if (Console.ReadKey().Key.ToString() == "0") break;
+        }
 
     }
 }
+
